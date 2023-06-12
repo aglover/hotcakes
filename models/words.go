@@ -1,6 +1,11 @@
 package models
 
-import "time"
+import (
+	"beacon50/tonic/initializers"
+	"time"
+
+	"gorm.io/gorm/clause"
+)
 
 type Word struct {
 	WordId       uint         `gorm:"primaryKey" json:"-"`
@@ -27,4 +32,9 @@ type Synonym struct {
 	Synonym   string    `json:"synonym"`
 	CreatedAt time.Time `json:"-"`
 	UpdatedAt time.Time `json:"-"`
+}
+
+func (word *Word) FindWordById(id int) {
+	initializers.ConnectDB()
+	initializers.DB.Preload(clause.Associations).First(&word, id)
 }
