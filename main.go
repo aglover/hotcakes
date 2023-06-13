@@ -22,7 +22,9 @@ func main() {
 		c.String(http.StatusOK, "Hello app engine world!")
 	})
 
-	r.GET("/word/:id", controllers.FindWordById)
+	r.GET("/old/word/:id", controllers.FindWordById)
+	r.GET("/word/:spelling", controllers.FindWord)
+	r.POST("/words", controllers.CreateWord)
 
 	r.GET("/doesitwork", func(c *gin.Context) {
 		newWord := models.Word{

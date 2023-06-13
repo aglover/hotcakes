@@ -34,7 +34,18 @@ type Synonym struct {
 	UpdatedAt time.Time `json:"-"`
 }
 
+func (word *Word) Create() error {
+	initializers.ConnectDB()
+	result := initializers.DB.Create(&word)
+	return result.Error
+}
+
 func (word *Word) FindWordById(id int) {
 	initializers.ConnectDB()
 	initializers.DB.Preload(clause.Associations).First(&word, id)
+}
+
+func (word *Word) FindWordBySpelling(spelling string) {
+	initializers.ConnectDB()
+	initializers.DB.Preload(clause.Associations).Where("word = ?", spelling).First(&word)
 }
