@@ -1,4 +1,4 @@
-module beacon50/tonic
+module aglover/hotcakes
 
 go 1.20
 

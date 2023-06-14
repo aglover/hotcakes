@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"beacon50/tonic/models"
+	"aglover/hotcakes/models"
 	"net/http"
 	"strconv"
 

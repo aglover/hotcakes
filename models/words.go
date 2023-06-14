@@ -1,7 +1,7 @@
 package models
 
 import (
-	"beacon50/tonic/initializers"
+	"aglover/hotcakes/initializers"
 	"time"
 
 	"gorm.io/gorm/clause"
